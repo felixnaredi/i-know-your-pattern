@@ -12,7 +12,7 @@ const NGRAM_SIZE: usize = 5;
 pub struct PatternTracker
 {
     buffer: BitVec,
-    pattern: HashMap<BitArray, Counter>,
+    pattern: HashMap<usize, Counter>,
 }
 
 impl PatternTracker
@@ -47,7 +47,7 @@ impl PatternTracker
         self.buffer.push(input);
     }
 
-    fn predict(&self, key: &BitArray) -> bool
+    fn predict(&self, key: &usize) -> bool
     {
         match self.pattern.get(key) {
             Some(counter) if counter[1] > counter[0] => true,
@@ -62,7 +62,7 @@ impl PatternTracker
         self.last_ngram(NGRAM_SIZE).map(|key| self.predict(&key))
     }
 
-    fn last_ngram(&self, n: usize) -> Option<BitArray>
+    fn last_ngram(&self, n: usize) -> Option<usize>
     {
         if self.buffer.len() >= n {
             let (_, bits) = self
@@ -73,7 +73,7 @@ impl PatternTracker
             let mut key = 0;
             key.view_bits_mut::<Lsb0>()[..bits.len()].clone_from_bitslice(bits);
 
-            Some(BitArray::new([key]))
+            Some(key)
         } else {
             None
         }

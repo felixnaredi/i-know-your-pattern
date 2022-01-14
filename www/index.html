@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>I know your pattern</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+  <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+  <main>
+    <p>See if you are able to give random input or if you are unknowingly governed by a pattern. Click the light and
+      dark button, try to be random! When the program has enough information it will start to guess your next move.</p>
+    <div class="align-block-center">
+      <div id="pattern-input-container">
+        <div id="black-input-button" class="pattern-input dark">
+          <div>
+            <span class="label">put</p>
+          </div>
+        </div>
+        <div id="white-input-button" class="pattern-input light">
+          <div>
+            <span class="label">put</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>inputs</th>
+        <th>predictions</th>
+        <th>correct</th>
+        <th>ratio</th>
+        <th>next</th>
+      </tr>
+      <tr>
+        <td id="inputs-display">0</td>
+        <td id="predictions-display">0</td>
+        <td id="correct-display">0</td>
+        <td id="ratio-display">-</td>
+        <td id="next-prediction-display"></td>
+      </tr>
+  </main>
+  <script src="./bootstrap.js"></script>
+</body>
+
+</html>
